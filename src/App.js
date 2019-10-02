@@ -25,17 +25,11 @@ const dd = {
 };
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.iframeRef = React.createRef();
-    this.state = {
-      pdfUrl: null
-    };
-  }
+  state = {
+    pdfUrl: null
+  };
 
   downloadPDF = () => {
-    console.log(this.iframeRef);
     const pdfDocGenerator = pdfMake.createPdf(dd);
     pdfDocGenerator.getDataUrl(dataUrl => {
       this.setState({ pdfUrl: dataUrl });
@@ -46,14 +40,12 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <span className="App-link" onClick={() => this.downloadPDF()}>
-            Show PDF
-          </span>
+          <button className="App-button" onClick={() => this.downloadPDF()}>
+            Click to see PDF
+          </button>
           <iframe
             title="pdf-iframe"
             src={this.state.pdfUrl}
-            frameBorder="0"
-            ref={this.iframeRef}
             style={{ width: 400, height: 650, backgroundColor: "#ccc" }}
           />
         </header>
