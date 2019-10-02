@@ -2,6 +2,7 @@
   "name": "cra-pdfmake",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "pdfmake": "^0.1.60",
     "react": "^16.10.1",
