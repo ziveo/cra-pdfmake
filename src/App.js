@@ -48,6 +48,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-content">
+          <div id="CodeContainer" style={containerStyling} />
           <iframe
             title="pdf-iframe"
             src={this.state.pdfUrl}
