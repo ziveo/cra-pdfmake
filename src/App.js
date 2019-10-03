@@ -52,7 +52,8 @@ class App extends Component {
           <iframe
             title="pdf-iframe"
             src={this.state.pdfUrl}
-            style={{ width: 600, height: 900, backgroundColor: "#ccc" }}
+            style={containerStyling}
+            frameBorder={0}
           />
         </div>
       </div>
