@@ -5,6 +5,7 @@ import "./App.css";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+const containerStyling = { width: 600, height: 950, backgroundColor: "#ccc" };
 
 const pdf = {
   watermark: {
