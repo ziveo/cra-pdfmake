@@ -45,10 +45,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <button className="App-button" onClick={() => this.downloadPDF()}>
-            Click to see PDF
-          </button>
+        <div className="App-content">
           <iframe
             title="pdf-iframe"
             src={this.state.pdfUrl}
