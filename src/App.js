@@ -35,7 +35,7 @@ class App extends Component {
     pdfUrl: null
   };
 
-  downloadPDF = () => {
+  componentDidMount = () => {
     const pdfDocGenerator = pdfMake.createPdf(dd);
     pdfDocGenerator.getDataUrl(dataUrl => {
       this.setState({ pdfUrl: dataUrl });
