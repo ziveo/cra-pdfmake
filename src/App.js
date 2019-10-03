@@ -8,7 +8,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 const dd = {
   watermark: {
     text: "test watermark",
-    opacity: 0.1,
+    opacity: 0.05,
     bold: true,
     italics: false
   },
