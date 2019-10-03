@@ -5,7 +5,8 @@ import "./App.css";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const dd = {
+
+const pdf = {
   watermark: {
     text: "test watermark",
     opacity: 0.05,
@@ -36,7 +37,7 @@ class App extends Component {
   };
 
   componentDidMount = () => {
-    const pdfDocGenerator = pdfMake.createPdf(dd);
+    const pdfDocGenerator = pdfMake.createPdf(pdf);
     pdfDocGenerator.getDataUrl(dataUrl => {
       this.setState({ pdfUrl: dataUrl });
     });
