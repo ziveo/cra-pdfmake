@@ -37,11 +37,32 @@
   background-color: #272822;
 }
 #CodeContainer textarea {
-  color: #E6DB74;
+  color: #e6db74;
   width: 600px;
   height: 950px;
   font-size: 14px;
   padding: 0.75rem 1rem;
   border: none;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: calc(600px * 2)) {
+  #PdfContainer,
+  #CodeContainer,
+  #CodeContainer textarea {
+    width: 50vw;
+  }
+}
+
+@media (orientation: portrait) {
+  .App-content {
+    flex-direction: column;
+  }
+
+  #PdfContainer,
+  #CodeContainer,
+  #CodeContainer textarea {
+    height: 50vh;
+    width: 100vw;
+  }
 }
