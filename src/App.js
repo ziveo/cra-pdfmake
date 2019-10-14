@@ -5,9 +5,7 @@ import "./App.css";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const containerStyling = { width: 600, height: 950, backgroundColor: "#ccc" };
-
-const pdf = {
+const pdfCode = {
   watermark: {
     text: "test watermark",
     opacity: 0.05,
@@ -22,23 +20,23 @@ const pdf = {
   },
   content: [
     "First paragraph",
-    "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines",
-    "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines",
-    "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines",
-    "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines",
-    "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines",
-    "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines",
     "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines"
   ]
 };
 
 class App extends Component {
   state = {
+    code: JSON.stringify(pdfCode, null, 2),
+    pdfCode: pdfCode,
     pdfUrl: null
   };
 
   componentDidMount = () => {
-    const pdfDocGenerator = pdfMake.createPdf(pdf);
+    this.createPDF(pdfCode);
+  };
+
+  createPDF = pdfCode => {
+    const pdfDocGenerator = pdfMake.createPdf(pdfCode);
     pdfDocGenerator.getDataUrl(dataUrl => {
       this.setState({ pdfUrl: dataUrl });
     });
@@ -48,11 +46,20 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-content">
-          <div id="CodeContainer" style={containerStyling} />
+          <div id="CodeContainer">
+            <textarea
+              value={this.state.code}
+              onChange={event => {
+                const value = event.target.value;
+                this.createPDF(JSON.parse(value));
+                this.setState({ code: value });
+              }}
+            />
+          </div>
           <iframe
+            id="PdfContainer"
             title="pdf-iframe"
             src={this.state.pdfUrl}
-            style={containerStyling}
             frameBorder={0}
           />
         </div>
