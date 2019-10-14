@@ -52,17 +52,17 @@
   #CodeContainer textarea {
     width: 50vw;
   }
-}
 
-@media (orientation: portrait) {
-  .App-content {
-    flex-direction: column;
-  }
+  @media (orientation: portrait) {
+    .App-content {
+      flex-direction: column;
+    }
 
-  #PdfContainer,
-  #CodeContainer,
-  #CodeContainer textarea {
-    height: 50vh;
-    width: 100vw;
+    #PdfContainer,
+    #CodeContainer,
+    #CodeContainer textarea {
+      height: 50vh;
+      width: 100vw;
+    }
   }
 }
