@@ -1,6 +1,6 @@
 {
-  "name": "cra-pdfmake",
-  "version": "0.1.0",
+  "name": "pdf-maker",
+  "version": "1.0.0",
   "private": true,
   "homepage": ".",
   "dependencies": {
