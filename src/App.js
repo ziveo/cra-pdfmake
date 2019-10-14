@@ -56,12 +56,14 @@ class App extends Component {
               }}
             />
           </div>
-          <iframe
-            id="PdfContainer"
-            title="pdf-iframe"
-            src={this.state.pdfUrl}
-            frameBorder={0}
-          />
+          <div id="PdfContainer">
+            <iframe
+              id="PdfContainer__iframe"
+              title="pdf-iframe"
+              src={this.state.pdfUrl}
+              frameBorder={0}
+            />
+          </div>
         </div>
       </div>
     );
