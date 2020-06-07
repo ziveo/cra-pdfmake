@@ -35,7 +35,7 @@ function App() {
     });
   });
 
-  const createPDF = (pdfCode) => {
+  const createPDF = (ev, pdfCode) => {
     const pdfDocGenerator = pdfMake.createPdf(JSON.parse(pdfCode));
     pdfDocGenerator.getDataUrl((dataUrl) => {
       setPdfUrl(dataUrl);
@@ -58,9 +58,7 @@ function App() {
               formatOnPaste: true,
               formatOnType: true,
             }}
-            onChange={(ev, value) => {
-              createPDF(value);
-            }}
+            onChange={createPDF}
           />
         </div>
         <div id='PdfContainer'>
