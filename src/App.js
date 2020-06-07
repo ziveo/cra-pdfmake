@@ -53,8 +53,8 @@ function App() {
             options={{
               wordWrap: 'on',
               minimap: {
-                enabled: false
-              }
+                enabled: false,
+              },
             }}
             onChange={(ev, value) => {
               createPDF(value);
