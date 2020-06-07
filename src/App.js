@@ -55,6 +55,8 @@ function App() {
               minimap: {
                 enabled: false,
               },
+              formatOnPaste: true,
+              formatOnType: true,
             }}
             onChange={(ev, value) => {
               createPDF(value);
