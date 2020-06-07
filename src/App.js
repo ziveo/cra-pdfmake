@@ -3,7 +3,7 @@ import { ControlledEditor } from '@monaco-editor/react';
 import pdfMake from 'pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
-import './App.css';
+import './App.scss';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 

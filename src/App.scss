@@ -1,3 +1,5 @@
+$container--width: 650px;
+
 body {
   position: fixed;
   overflow: hidden;
@@ -10,7 +12,7 @@ body {
 }
 
 .App-content {
-  background-color: #673AB7;
+  background-color: #673ab7;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -21,12 +23,12 @@ body {
 
 #CodeContainer section,
 #PdfContainer {
-  width: 600px !important;
+  width: $container--width !important;
   height: 950px !important;
 }
 
 #PdfContainer__iframe {
-  width: 600px;
+  width: $container--width;
   height: 950px;
   font-size: 14px;
   border: none;
@@ -37,7 +39,7 @@ body {
   padding: 0.75rem 1rem;
 }
 
-@media screen and (max-width: calc(600px * 2)) {
+@media screen and (max-width: calc(#{$container--width} * 2)) {
   #CodeContainer textarea,
   #PdfContainer,
   #PdfContainer__iframe {
@@ -45,7 +47,7 @@ body {
   }
 }
 
-@media screen and (max-width: calc(600px * 2)) and (orientation: portrait) {
+@media screen and (max-width: calc(#{$container--width} * 2)) and (orientation: portrait) {
   .App-content {
     flex-direction: column;
   }
