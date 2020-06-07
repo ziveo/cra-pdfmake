@@ -9,10 +9,6 @@ body {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
 .App-content {
   background-color: #282c34;
   min-height: 100vh;
@@ -21,16 +17,6 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-button {
-  padding: 0.5rem 1rem;
-  color: #09d3ac;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  background-color: #0400ff;
 }
 
 #CodeContainer,
