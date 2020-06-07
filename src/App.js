@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ControlledEditor } from '@monaco-editor/react';
 import pdfMake from 'pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import ReactGA from 'react-ga';
 
 import './App.scss';
 
@@ -29,6 +30,10 @@ const initialPdfCode = {
 function App() {
   const [code, setCode] = useState(JSON.stringify(initialPdfCode, null, 2));
   const [pdfUrl, setPdfUrl] = useState(() => {
+    ReactGA.event({
+      category: 'Generating PDF',
+      action: 'Generating initial PDF',
+    });
     const pdfDocGenerator = pdfMake.createPdf(initialPdfCode);
     pdfDocGenerator.getDataUrl((dataUrl) => {
       setPdfUrl(dataUrl);
@@ -36,6 +41,11 @@ function App() {
   });
 
   const createPDF = (ev, pdfCode) => {
+    ReactGA.event({
+      category: 'Updating PDF',
+      action: 'Updating PDF config',
+    });
+
     const pdfDocGenerator = pdfMake.createPdf(JSON.parse(pdfCode));
     pdfDocGenerator.getDataUrl((dataUrl) => {
       setPdfUrl(dataUrl);
