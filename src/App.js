@@ -50,6 +50,12 @@ function App() {
             height='90vh'
             value={code}
             language='json'
+            options={{
+              wordWrap: 'on',
+              minimap: {
+                enabled: false
+              }
+            }}
             onChange={(ev, value) => {
               createPDF(value);
             }}
