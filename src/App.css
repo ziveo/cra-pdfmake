@@ -19,20 +19,13 @@ body {
   color: white;
 }
 
-#CodeContainer,
+#CodeContainer section,
 #PdfContainer {
-  width: 600px;
-  height: 950px;
+  width: 600px !important;
+  height: 950px !important;
 }
 
-#CodeContainer,
-#CodeContainer textarea {
-  background-color: #272822;
-}
-
-#CodeContainer textarea,
 #PdfContainer__iframe {
-  color: #e6db74;
   width: 600px;
   height: 950px;
   font-size: 14px;

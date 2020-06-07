@@ -1,11 +1,13 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { ControlledEditor } from "@monaco-editor/react";
 import pdfMake from "pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+
 import "./App.css";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const pdfCode = {
+const initialPdfCode = {
   watermark: {
     text: "test watermark",
     opacity: 0.05,
@@ -19,55 +21,51 @@ const pdfCode = {
     keywords: "keywords for document"
   },
   content: [
-    "First paragraph",
+    "First paragraph 123",
     "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines"
   ]
 };
 
-class App extends Component {
-  state = {
-    code: JSON.stringify(pdfCode, null, 2),
-    pdfCode: pdfCode,
-    pdfUrl: null
-  };
-
-  componentDidMount = () => {
-    this.createPDF(pdfCode);
-  };
-
-  createPDF = pdfCode => {
-    const pdfDocGenerator = pdfMake.createPdf(pdfCode);
+function App() {
+  const [code, setCode] = useState(JSON.stringify(initialPdfCode, null, 2));
+  const [pdfUrl, setPdfUrl] = useState(() => {
+    const pdfDocGenerator = pdfMake.createPdf(initialPdfCode);
     pdfDocGenerator.getDataUrl(dataUrl => {
-      this.setState({ pdfUrl: dataUrl });
+      setPdfUrl(dataUrl);
+    });
+  });
+
+  const createPDF = pdfCode => {
+    const pdfDocGenerator = pdfMake.createPdf(JSON.parse(pdfCode));
+    pdfDocGenerator.getDataUrl(dataUrl => {
+      setPdfUrl(dataUrl);
     });
   };
 
-  render() {
-    return (
-      <div className="App">
-        <div className="App-content">
-          <div id="CodeContainer">
-            <textarea
-              value={this.state.code}
-              onChange={event => {
-                const value = event.target.value;
-                this.createPDF(JSON.parse(value));
-                this.setState({ code: value });
-              }}
-            />
-          </div>
-          <div id="PdfContainer">
-            <iframe
-              id="PdfContainer__iframe"
-              title="pdf-iframe"
-              src={this.state.pdfUrl}
-              frameBorder={0}
-            />
-          </div>
+  return (
+    <div className="App">
+      <div className="App-content">
+        <div id="CodeContainer">
+          <ControlledEditor
+            height="90vh"
+            value={code}
+            language="json"
+            onChange={(ev, value) => {
+              createPDF(value);
+            }}
+          />
+        </div>
+        <div id="PdfContainer">
+          <iframe
+            id="PdfContainer__iframe"
+            title="pdf-iframe"
+            src={pdfUrl}
+            frameBorder={0}
+          />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
