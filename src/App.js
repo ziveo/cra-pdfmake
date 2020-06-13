@@ -5,11 +5,13 @@ import ReactGA from 'react-ga';
 import { initialPdfCode } from './app.config';
 
 import './App.scss';
+import pdfUrl from './pdf/initial-pdf.pdf';
 
 const PdfContainer = loadable(() => import('./pdf/PdfContainer'));
 
 function App() {
   const [code, setCode] = useState(JSON.stringify(initialPdfCode, null, 2));
+  const [pdfEdited, setPdfEdited] = useState(false);
 
   const createPDF = (ev, pdfCode) => {
     ReactGA.event({
@@ -18,6 +20,7 @@ function App() {
     });
 
     setCode(pdfCode);
+    setPdfEdited(true);
   };
 
   return (
@@ -37,7 +40,14 @@ function App() {
           onChange={createPDF}
         />
       </div>
-      <PdfContainer code={code} />
+
+      <div id='PdfContainer'>
+        {!pdfEdited ? (
+          <iframe id='PdfContainer__iframe' title='pdf-iframe' src={pdfUrl} frameBorder={0} />
+        ) : (
+          <PdfContainer code={code} />
+        )}
+      </div>
     </div>
   );
 }

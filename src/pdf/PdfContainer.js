@@ -32,7 +32,7 @@ const PdfContainer = (props) => {
   }, [props.code, code]);
 
   return (
-    <div id='PdfContainer'>
+    <div className='PdfContainer__edited'>
       <iframe id='PdfContainer__iframe' title='pdf-iframe' src={pdfUrl} frameBorder={0} />
     </div>
   );
