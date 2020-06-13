@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+$header--height: 50px;
 $container--width: 625px;
+$theme--color: #673ab7;
 
 body {
   margin: 0;
@@ -7,24 +11,39 @@ body {
   overflow: hidden;
   width: 100%;
   height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 #root {
   width: 100%;
-  height: 100%;
-  background-color: #673ab7;
+  height: calc(100% - #{$header--height});
+  background-color: $theme--color;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  flex-direction: column;
 }
 
 .App {
   display: flex;
 }
 
-@media screen and (max-width: calc(#{$container--width} * 2)) {
+#App__title {
+  height: $header--height;
+  line-height: $header--height;
+  color: $theme--color;
+  width: 100%;
+  margin: 0;
+  padding: 0 0.5rem;
+  font-size: 32px;
+  font-weight: 500;
+  border-bottom: 1px solid;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: $container--width * 2) {
   #PdfContainer,
   #PdfContainer__iframe {
     width: 45vw;
