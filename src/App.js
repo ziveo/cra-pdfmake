@@ -54,26 +54,23 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='App-content'>
-        <div id='CodeContainer'>
-          <ControlledEditor
-            height='90vh'
-            value={code}
-            language='json'
-            options={{
-              wordWrap: 'on',
-              minimap: {
-                enabled: false,
-              },
-              formatOnPaste: true,
-              formatOnType: true,
-            }}
-            onChange={createPDF}
-          />
-        </div>
-        <div id='PdfContainer'>
-          <iframe id='PdfContainer__iframe' title='pdf-iframe' src={pdfUrl} frameBorder={0} />
-        </div>
+      <div id='CodeContainer'>
+        <ControlledEditor
+          value={code}
+          language='json'
+          options={{
+            wordWrap: 'on',
+            minimap: {
+              enabled: false,
+            },
+            formatOnPaste: true,
+            formatOnType: true,
+          }}
+          onChange={createPDF}
+        />
+      </div>
+      <div id='PdfContainer'>
+        <iframe id='PdfContainer__iframe' title='pdf-iframe' src={pdfUrl} frameBorder={0} />
       </div>
     </div>
   );

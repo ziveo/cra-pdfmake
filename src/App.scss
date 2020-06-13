@@ -1,19 +1,18 @@
-$container--width: 650px;
+$container--width: 625px;
 
 body {
+  margin: 0;
+  padding: 0;
   position: fixed;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-content {
+#root {
+  width: 100%;
+  height: 100%;
   background-color: #673ab7;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,38 +20,53 @@ body {
   color: white;
 }
 
-#CodeContainer section,
-#PdfContainer {
-  width: $container--width !important;
-  height: 950px !important;
-}
-
-#PdfContainer__iframe {
-  width: $container--width;
-  height: 950px;
-  font-size: 14px;
-  border: none;
-  box-sizing: border-box;
+.App {
+  display: flex;
 }
 
 @media screen and (max-width: calc(#{$container--width} * 2)) {
-  #CodeContainer textarea,
   #PdfContainer,
   #PdfContainer__iframe {
-    width: 50vw;
+    width: 45vw;
   }
-}
 
-@media screen and (max-width: calc(#{$container--width} * 2)) and (orientation: portrait) {
-  .App-content {
+  .App {
     flex-direction: column;
   }
 
   #CodeContainer,
-  #CodeContainer textarea,
-  #PdfContainer,
-  #CodeContainer textarea {
+  #PdfContainer {
+    display: flex;
+    justify-content: center;
     height: 50vh;
     width: 100vw;
+  }
+}
+
+@media screen and (max-width: calc(#{$container--width})) {
+  #PdfContainer,
+  #PdfContainer__iframe {
+    width: 65vw;
+  }
+
+  #PdfContainer {
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: ($container--width * 2) + 1) {
+  #CodeContainer,
+  #PdfContainer {
+    width: $container--width !important;
+    height: 950px !important;
+    border: 10px solid #0000;
+  }
+
+  #PdfContainer__iframe {
+    width: $container--width;
+    height: 950px;
+    font-size: 14px;
+    border: none;
+    box-sizing: border-box;
   }
 }
