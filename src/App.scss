@@ -28,7 +28,9 @@ body {
 }
 
 .App {
+  width: 100vw;
   display: flex;
+  justify-content: center;
 }
 
 #App__title {
