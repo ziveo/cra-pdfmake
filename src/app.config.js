@@ -1,3 +1,4 @@
+export const appUrl = 'https://ziveo.github.io/cra-pdfmake';
 export const initialPdfCode = {
   watermark: {
     text: 'test watermark',

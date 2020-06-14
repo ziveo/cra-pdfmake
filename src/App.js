@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { ControlledEditor } from '@monaco-editor/react';
 import loadable from '@loadable/component';
 import ReactGA from 'react-ga';
-import { initialPdfCode } from './app.config';
+import { appUrl, initialPdfCode } from './app.config';
 
 import packageJson from '../package.json';
 
 import './App.scss';
 import pdfUrl from './pdf/initial-pdf.pdf';
-import { refreshCacheAndReload, checkSemverGreaterThan } from './utils/cacheBusting';
+import { checkSemverGreaterThan, refreshCacheAndReload } from './utils/cacheBusting';
 
 const PdfContainer = loadable(() => import('./pdf/PdfContainer'));
 
@@ -17,7 +17,7 @@ function App() {
   const [pdfEdited, setPdfEdited] = useState(false);
 
   useEffect(() => {
-    fetch('/meta.json')
+    fetch(appUrl + '/meta.json')
       .then((response) => response.json())
       .then((meta) => {
         const latestVersion = meta.version;
