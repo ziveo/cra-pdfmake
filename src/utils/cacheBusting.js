@@ -1,7 +1,5 @@
-import { appUrl } from '../app.config';
-import packageJson from '../../package.json';
-
-const META_JSON_PATH = appUrl + '/meta.json';
+import { META_JSON_PATH } from "../app.config";
+import packageJson from "../../package.json";
 
 /**
  * Check if Semver version of first version is grater than second
@@ -9,7 +7,7 @@ const META_JSON_PATH = appUrl + '/meta.json';
  * @param {string} versionB - Semver version B
  * @return {boolean} - True is versionA is greater than versionB
  */
-export const checkSemverGreaterThan = (versionA, versionB) => {
+export const checkSemverGrewaterThan = (versionA, versionB) => {
   const versionsA = versionA.split(/\./g);
 
   const versionsB = versionB.split(/\./g);
