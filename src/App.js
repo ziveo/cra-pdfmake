@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ControlledEditor } from '@monaco-editor/react';
 import loadable from '@loadable/component';
 import ReactGA from 'react-ga';
@@ -8,12 +8,30 @@ import packageJson from '../package.json';
 
 import './App.scss';
 import pdfUrl from './pdf/initial-pdf.pdf';
+import { refreshCacheAndReload, checkSemverGreaterThan } from './utils/cacheBusting';
 
 const PdfContainer = loadable(() => import('./pdf/PdfContainer'));
 
 function App() {
   const [code, setCode] = useState(JSON.stringify(initialPdfCode, null, 2));
   const [pdfEdited, setPdfEdited] = useState(false);
+
+  useEffect(() => {
+    fetch('/meta.json')
+      .then((response) => response.json())
+      .then((meta) => {
+        const latestVersion = meta.version;
+        const currentVersion = packageJson.version;
+
+        const shouldForceRefresh = checkSemverGreaterThan(latestVersion, currentVersion);
+        if (shouldForceRefresh) {
+          console.log(`We have a new version - ${latestVersion}. Should force refresh`);
+          refreshCacheAndReload();
+        } else {
+          console.log(`You already have the latest version - ${latestVersion}. No cache refresh needed.`);
+        }
+      });
+  });
 
   const createPDF = (ev, pdfCode) => {
     ReactGA.event({
