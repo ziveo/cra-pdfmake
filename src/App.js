@@ -3,8 +3,8 @@ import { ControlledEditor } from '@monaco-editor/react';
 import loadable from '@loadable/component';
 import ReactGA from 'react-ga';
 
-import { appUrl, initialPdfCode } from './app.config';
-import { checkSemverGreaterThan, refreshCacheAndReload } from './utils/cacheBusting';
+import { initialPdfCode } from './app.config';
+import { cacheBusting } from './utils/cacheBusting';
 import packageJson from '../package.json';
 
 import pdfUrl from './pdf/initial-pdf.pdf';
@@ -19,20 +19,7 @@ function App() {
   const [pdfEdited, setPdfEdited] = useState(false);
 
   useEffect(() => {
-    fetch(appUrl + '/meta.json')
-      .then((response) => response.json())
-      .then((meta) => {
-        const latestVersion = meta.version;
-        const currentVersion = packageJson.version;
-
-        const shouldForceRefresh = checkSemverGreaterThan(latestVersion, currentVersion);
-        if (shouldForceRefresh) {
-          console.log(`We have a new version - ${latestVersion}. Should force refresh`);
-          refreshCacheAndReload();
-        } else {
-          console.log(`You already have the latest version - ${latestVersion}. No cache refresh needed.`);
-        }
-      });
+    cacheBusting();
   }, []);
 
   const createPDF = (ev, pdfCode) => {
