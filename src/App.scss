@@ -3,6 +3,7 @@
 $header--height: 50px;
 $container--width: 625px;
 $theme--color: #673ab7;
+$pdf__background-color: #525659;
 
 body {
   margin: 0;
@@ -43,6 +44,14 @@ body {
   box-sizing: border-box;
 }
 
+#CodeContainer {
+  background-color: #fff;
+}
+
+#PdfContainer {
+  background-color: $pdf__background-color;
+}
+
 @media screen and (max-width: $container--width * 2) {
   #PdfContainer,
   #PdfContainer__iframe {
@@ -57,8 +66,14 @@ body {
   #PdfContainer {
     display: flex;
     justify-content: center;
-    height: 50vh;
     width: 100vw;
+  }
+
+  #CodeContainer,
+  #PdfContainer,
+  #PdfContainer__edited,
+  #PdfContainer__iframe {
+    height: calc(50vh - (#{$header--height} / 2));
   }
 }
 
@@ -78,7 +93,7 @@ body {
   #PdfContainer {
     width: $container--width !important;
     height: 950px !important;
-    border: 10px solid #0000;
+    border: 10px solid $theme--color;
   }
 
   #PdfContainer__iframe {
