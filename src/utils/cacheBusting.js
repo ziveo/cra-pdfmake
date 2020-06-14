@@ -1,6 +1,8 @@
 import { appUrl } from '../app.config';
 import packageJson from '../../package.json';
 
+const META_JSON_PATH = appUrl + '/meta.json';
+
 /**
  * Check if Semver version of first version is grater than second
  * @param {string} versionA - Semver version A
@@ -37,7 +39,7 @@ export const refreshCacheAndReload = () => {
 };
 
 export const cacheBusting = () => {
-  fetch(appUrl + '/meta.json')
+  fetch(META_JSON_PATH)
     .then((response) => response.json())
     .then((meta) => {
       const latestVersion = meta.version;
