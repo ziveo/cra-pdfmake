@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { ControlledEditor } from '@monaco-editor/react';
 import loadable from '@loadable/component';
 import ReactGA from 'react-ga';
-import { appUrl, initialPdfCode } from './app.config';
 
+import { appUrl, initialPdfCode } from './app.config';
+import { checkSemverGreaterThan, refreshCacheAndReload } from './utils/cacheBusting';
 import packageJson from '../package.json';
 
-import './App.scss';
 import pdfUrl from './pdf/initial-pdf.pdf';
-import { checkSemverGreaterThan, refreshCacheAndReload } from './utils/cacheBusting';
+
+import './App.scss';
 
 const PdfContainer = loadable(() => import('./pdf/PdfContainer'));
 
@@ -31,7 +32,7 @@ function App() {
           console.log(`You already have the latest version - ${latestVersion}. No cache refresh needed.`);
         }
       });
-  });
+  }, []);
 
   const createPDF = (ev, pdfCode) => {
     ReactGA.event({
