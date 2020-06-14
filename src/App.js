@@ -10,6 +10,7 @@ import packageJson from '../package.json';
 import pdfUrl from './pdf/initial-pdf.pdf';
 
 import './App.scss';
+import JSON5 from 'json5';
 
 const PdfContainer = loadable(() => import('./pdf/PdfContainer'));
 
@@ -35,12 +36,15 @@ function App() {
   }, []);
 
   const createPDF = (ev, pdfCode) => {
+    const jsonObject = JSON5.parse(pdfCode);
+    const jsonString = JSON.stringify(jsonObject, null, 2);
+
     ReactGA.event({
       category: 'Updating PDF',
       action: 'Updating PDF config',
     });
 
-    setCode(pdfCode);
+    setCode(jsonString);
     setPdfEdited(true);
   };
 
