@@ -17,7 +17,6 @@ body {
 
 #root {
   width: 100%;
-  height: calc(100% - #{$header--height});
   background-color: $theme--color;
   display: flex;
   align-items: center;
@@ -33,17 +32,27 @@ body {
   justify-content: center;
 }
 
-#App__title {
+header {
+  display: flex;
+  align-items: baseline;
   height: $header--height;
   line-height: $header--height;
   color: $theme--color;
   width: 100%;
+  border-bottom: 2px solid $theme--color;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+#App__title {
   margin: 0;
   padding: 0 0.5rem;
   font-size: 32px;
   font-weight: 500;
-  border-bottom: 2px solid $theme--color;
-  box-sizing: border-box;
+}
+
+#App__version {
+  font-size: 14px;
 }
 
 #CodeContainer {
