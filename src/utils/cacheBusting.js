@@ -7,7 +7,7 @@ import packageJson from "../../package.json";
  * @param {string} versionB - Semver version B
  * @return {boolean} - True is versionA is greater than versionB
  */
-export const checkSemverGrewaterThan = (versionA, versionB) => {
+export const checkSemverGreaterThan = (versionA, versionB) => {
   const versionsA = versionA.split(/\./g);
 
   const versionsB = versionB.split(/\./g);
