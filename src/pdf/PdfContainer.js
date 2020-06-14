@@ -23,11 +23,16 @@ const PdfContainer = (props) => {
   useEffect(() => {
     const propCodeFormated = props.code;
     setCode(propCodeFormated);
-    if (code !== propCodeFormated) {
-      const pdfDocGenerator = pdfMake.createPdf(JSON.parse(props.code));
-      pdfDocGenerator.getDataUrl((dataUrl) => {
-        setPdfUrl(dataUrl);
-      });
+
+    try {
+      if (code !== propCodeFormated) {
+        const pdfDocGenerator = pdfMake.createPdf(JSON.parse(props.code));
+        pdfDocGenerator.getDataUrl((dataUrl) => {
+          setPdfUrl(dataUrl);
+        });
+      }
+    } catch (e) {
+      console.log(e);
     }
   }, [props.code, code]);
 
