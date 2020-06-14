@@ -1,19 +1,22 @@
 {
-  "short_name": "Make PDF",
-  "name": "Make PDF files using Create React App and PDF Make with VS Code monaco editing panel",
+  "short_name": "PDF Maker",
+  "name": "PDF Maker",
+  "description": "PDF Maker create PDF files from JSON config",
+  "categories": ["app", "education", "pdf"],
+  "lang": "en-US",
   "icons": [
     {
-      "src": "logo36.png",
+      "src": "icons/logo36.png",
       "sizes": "36x36",
       "type": "image/png"
     },
     {
-      "src": "logo192.png",
+      "src": "icons/logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "icons/logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
@@ -21,5 +24,12 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#673ab7",
-  "background_color": "#673ab7"
+  "background_color": "#673ab7",
+  "screenshots" : [
+    {
+      "src": "screenshots/screenshot1.png",
+      "sizes": "1366x1024",
+      "type": "image/png"
+    }
+  ]
 }
