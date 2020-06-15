@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { ControlledEditor } from '@monaco-editor/react';
 import loadable from '@loadable/component';
 import ReactGA from 'react-ga';
 
@@ -7,11 +6,12 @@ import { initialPdfCode } from './app.config';
 import { cacheBusting } from './utils/cacheBusting';
 import packageJson from '../package.json';
 
-import pdfUrl from './pdf/initial-pdf.pdf';
+import pdfImage from './pdf/initial-pdf.jpg';
 
 import './App.scss';
 import JSON5 from 'json5';
 
+const CodeContainer = loadable(() => import('./components/CodeContainer'));
 const PdfContainer = loadable(() => import('./pdf/PdfContainer'));
 
 function App() {
@@ -39,29 +39,24 @@ function App() {
   return (
     <>
       <header>
-        <h1 id='App__title'>PDF Maker</h1>
-        <sub id='App__version'>v{packageJson.version}</sub>
+        <div className='title__container'>
+          <h1 id='App__title'>PDF Maker</h1>
+          <sub id='App__version'>v{packageJson.version}</sub>
+        </div>
+        <nav>
+          <button className='edit__button' onClick={() => setPdfEdited(true)}>
+            EDIT
+          </button>
+        </nav>
       </header>
       <div className='App'>
-        <div id='CodeContainer'>
-          <ControlledEditor
-            value={code}
-            language='json'
-            options={{
-              wordWrap: 'on',
-              minimap: {
-                enabled: false,
-              },
-              formatOnPaste: true,
-              formatOnType: true,
-            }}
-            onChange={createPDF}
-          />
-        </div>
+        {pdfEdited && <CodeContainer code={code} createPDF={createPDF} />}
 
         <div id='PdfContainer'>
           {!pdfEdited ? (
-            <iframe id='PdfContainer__iframe' title='pdf-iframe' src={pdfUrl} frameBorder={0} />
+            <div id='PdfContainer__iframe'>
+              <div className='PdfContainer__initial-image' style={{ backgroundImage: `url(${pdfImage})` }} />
+            </div>
           ) : (
             <PdfContainer code={code} />
           )}
