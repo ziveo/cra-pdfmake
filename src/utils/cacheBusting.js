@@ -1,4 +1,4 @@
-import { MANIFEST_JSON_PATH } from '../app.config';
+import { META_JSON_PATH } from '../app.config';
 import packageJson from '../../package.json';
 
 /**
@@ -37,7 +37,7 @@ export const refreshCacheAndReload = () => {
 };
 
 export const cacheBusting = () => {
-  fetch(MANIFEST_JSON_PATH)
+  fetch(META_JSON_PATH)
     .then((response) => response.json())
     .then((meta) => {
       const latestVersion = meta.version;
