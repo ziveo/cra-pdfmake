@@ -3,6 +3,7 @@ import ReactGA from 'react-ga';
 import pdfMake from 'pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { initialPdfCode } from '../app.config';
+import packageJson from '../../package.json';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -12,6 +13,7 @@ const PdfContainer = (props) => {
     ReactGA.event({
       category: 'Generating PDF',
       action: 'Generating initial PDF',
+      label: `App version ${packageJson.version}`,
     });
 
     const pdfDocGenerator = pdfMake.createPdf(initialPdfCode);

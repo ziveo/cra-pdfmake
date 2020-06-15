@@ -29,6 +29,7 @@ function App() {
     ReactGA.event({
       category: 'Updating PDF',
       action: 'Updating PDF config',
+      label: `App version ${packageJson.version}`,
     });
 
     setCode(jsonString);
