@@ -1,6 +1,5 @@
 import { MANIFEST_JSON_PATH } from '../app.config';
 import packageJson from '../../package.json';
-import { unregister } from '../serviceWorker';
 
 /**
  * Check if Semver version of first version is grater than second
@@ -47,9 +46,7 @@ export const cacheBusting = () => {
       const shouldForceRefresh = checkSemverGreaterThan(latestVersion, currentVersion);
       if (shouldForceRefresh) {
         console.log(`We have a new version - ${latestVersion}. Should force refresh`);
-        // delete browser cache and hard reload
-        unregister();
-        window.location.reload(true);
+        refreshCacheAndReload();
       } else {
         console.log(`You already have the latest version - ${latestVersion}. No cache refresh needed.`);
       }
