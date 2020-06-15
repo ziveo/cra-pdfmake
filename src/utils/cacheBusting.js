@@ -1,5 +1,5 @@
-import { META_JSON_PATH } from "../app.config";
-import packageJson from "../../package.json";
+import { MANIFEST_JSON_PATH } from '../app.config';
+import packageJson from '../../package.json';
 
 /**
  * Check if Semver version of first version is grater than second
@@ -37,7 +37,7 @@ export const refreshCacheAndReload = () => {
 };
 
 export const cacheBusting = () => {
-  fetch(META_JSON_PATH)
+  fetch(MANIFEST_JSON_PATH)
     .then((response) => response.json())
     .then((meta) => {
       const latestVersion = meta.version;
