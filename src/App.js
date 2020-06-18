@@ -55,7 +55,11 @@ function App() {
         <div id='PdfContainer'>
           {!pdfEdited ? (
             <div id='PdfContainer__iframe'>
-              <div className='PdfContainer__initial-image' style={{ backgroundImage: `url(${pdfImage})` }} />
+              <div
+                className='PdfContainer__initial-image'
+                style={{ backgroundImage: `url(${pdfImage})` }}
+                onClick={() => setPdfEdited(true)}
+              />
             </div>
           ) : (
             <PdfContainer code={code} />
