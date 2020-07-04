@@ -2,7 +2,7 @@
   "short_name": "PDF Maker",
   "name": "PDF Maker",
   "description": "PDF Maker create PDF files from JSON config",
-  "version": "1.4.3",
+  "version": "1.6.1",
   "categories": [
     "app",
     "education",
