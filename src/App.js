@@ -6,10 +6,11 @@ import { initialPdfCode } from './app.config';
 import { cacheBusting } from './utils/cacheBusting';
 import packageJson from '../package.json';
 
-import pdfImage from './pdf/initial-pdf.jpg';
+import pdfImage from './images/initial-pdf.jpg';
 
 import './App.scss';
 import JSON5 from 'json5';
+import InitialPdf from './pdf/InitialPdf';
 
 const CodeContainer = loadable(() => import('./components/CodeContainer'));
 const PdfContainer = loadable(() => import('./pdf/PdfContainer'));
@@ -55,11 +56,9 @@ function App() {
         <div id='PdfContainer'>
           {!pdfEdited ? (
             <div id='PdfContainer__iframe'>
-              <div
-                className='PdfContainer__initial-image'
-                style={{ backgroundImage: `url(${pdfImage})` }}
-                onClick={() => setPdfEdited(true)}
-              />
+              <div className='PdfContainer__initial-image' onClick={() => setPdfEdited(true)}>
+                <InitialPdf />
+              </div>
             </div>
           ) : (
             <PdfContainer code={code} />
