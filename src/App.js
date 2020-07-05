@@ -6,8 +6,6 @@ import { initialPdfCode } from './app.config';
 import { cacheBusting } from './utils/cacheBusting';
 import packageJson from '../package.json';
 
-import pdfImage from './images/initial-pdf.jpg';
-
 import './App.scss';
 import JSON5 from 'json5';
 import InitialPdf from './pdf/InitialPdf';
