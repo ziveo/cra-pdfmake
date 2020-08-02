@@ -44,7 +44,7 @@ function App() {
         </div>
         <nav>
           <button className='edit__button' onClick={() => setPdfEdited(true)}>
-            EDIT
+            EDIT PDF
           </button>
         </nav>
       </header>
