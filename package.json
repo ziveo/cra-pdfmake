@@ -1,6 +1,6 @@
 {
   "name": "pdf-maker",
-  "version": "1.6.4",
+  "version": "2.0.0",
   "private": true,
   "homepage": ".",
   "dependencies": {
@@ -8,24 +8,24 @@
     "@monaco-editor/react": "3.7.4",
     "json5": "^2.1.3",
     "pdfmake": "0.1.69",
-    "posthtml": "^0.13.1",
+    "posthtml": "0.15.1",
     "posthtml-inline-assets": "^3.1.0",
     "prettier": "2.2.1",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "react-ga": "3.3.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^4.0.1",
     "sass": "1.30.0",
-    "workbox-build": "^5.1.3"
+    "workbox-build": "^6.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "build-sw": "node ./src/sw-build.js",
     "inline:assets": "node ./utils/inlineHtml.js",
     "prebuild": "node ./utils/generate-build-version.js",
     "prettier": "prettier ./build/service-worker.js --write",
     "postbuild": "npm run inline:assets && npm run build-sw && npm run prettier",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
