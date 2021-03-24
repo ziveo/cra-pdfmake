@@ -21,7 +21,7 @@ function App() {
     cacheBusting();
   }, []);
 
-  const createPDF = (ev, pdfCode) => {
+  const createPDF = (pdfCode, event) => {
     const jsonObject = JSON5.parse(pdfCode);
     const jsonString = JSON.stringify(jsonObject, null, 2);
 

@@ -1,17 +1,17 @@
 import React from 'react';
-import { ControlledEditor } from '@monaco-editor/react';
+import Editor from '@monaco-editor/react';
 
 const CodeContainer = (props) => {
   const { code, createPDF } = props;
   return (
     <div id='CodeContainer'>
-      <ControlledEditor
+      <Editor
         value={code}
         language='json'
         options={{
           wordWrap: 'on',
           minimap: {
-            enabled: false,
+            enabled: true,
           },
           formatOnPaste: true,
           formatOnType: true,
