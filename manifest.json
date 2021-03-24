@@ -1,0 +1,40 @@
+{
+  "short_name": "PDF Maker",
+  "name": "PDF Maker",
+  "description": "PDF Maker create PDF files from JSON config",
+  "version": "2.1.0",
+  "categories": [
+    "app",
+    "education",
+    "pdf"
+  ],
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "icons/logo36.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot1.png",
+      "sizes": "1366x1024",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#673ab7",
+  "background_color": "#673ab7"
+}

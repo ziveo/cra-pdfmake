@@ -1,0 +1,2 @@
+(this["webpackJsonppdf-maker"]=this["webpackJsonppdf-maker"]||[]).push([[4],{34:function(e,a,n){"use strict";n.r(a);n(1);var t=n(33),o=n(0);a.default=function(e){var a=e.code,n=e.createPDF;return Object(o.jsx)("div",{id:"CodeContainer",children:Object(o.jsx)(t.a,{value:a,language:"json",options:{wordWrap:"on",minimap:{enabled:!0},formatOnPaste:!0,formatOnType:!0},onChange:n})})}}}]);
+//# sourceMappingURL=4.1198669e.chunk.js.map
