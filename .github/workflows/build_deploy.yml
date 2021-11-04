@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@master
 
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@master
+      uses: JamesIves/github-pages-deploy-action@4.1.5
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # Token is in GitHub repo secrets option
         BASE_BRANCH: master # The branch the action should deploy from.
